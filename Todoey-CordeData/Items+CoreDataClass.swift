@@ -2,7 +2,7 @@
 //  Items+CoreDataClass.swift
 //  Todoey-CordeData
 //
-//  Created by Long Bảo on 14/03/2023.
+//  Created by MAC on 08/11/2023.
 //
 //
 
@@ -11,5 +11,5 @@ import CoreData
 
 @objc(Items)
 public class Items: NSManagedObject {
-    
+
 }

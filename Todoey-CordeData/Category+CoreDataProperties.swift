@@ -2,7 +2,7 @@
 //  Category+CoreDataProperties.swift
 //  Todoey-CordeData
 //
-//  Created by Long Bảo on 14/03/2023.
+//  Created by MAC on 08/11/2023.
 //
 //
 
@@ -17,6 +17,8 @@ extension Category {
     }
 
     @NSManaged public var nameCategory: String?
+    @NSManaged public var sieu_nhan: Double
+    @NSManaged public var suuu: UUID?
     @NSManaged public var toMultiItems: NSSet?
 
 }

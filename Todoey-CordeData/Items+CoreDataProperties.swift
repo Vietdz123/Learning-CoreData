@@ -2,7 +2,7 @@
 //  Items+CoreDataProperties.swift
 //  Todoey-CordeData
 //
-//  Created by Long Bảo on 14/03/2023.
+//  Created by MAC on 08/11/2023.
 //
 //
 

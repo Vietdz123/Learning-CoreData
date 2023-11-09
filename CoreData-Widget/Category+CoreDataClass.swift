@@ -1,6 +1,6 @@
 //
 //  Category+CoreDataClass.swift
-//  Todoey-CordeData
+//  CoreData-Widget
 //
 //  Created by MAC on 08/11/2023.
 //

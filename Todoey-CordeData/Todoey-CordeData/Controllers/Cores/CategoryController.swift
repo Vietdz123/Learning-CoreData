@@ -21,7 +21,7 @@ class CategoryController: UITableViewController {
     private lazy var addNewItemAlert: UIAlertController = {
         var alertController = UIAlertController(title: "Add New Category", message: .none, preferredStyle: .alert)
         let actionAdd = UIAlertAction(title: "Add", style: .default) { _ in
-            guard let title = alertController.textFields?.last?.text else {return}
+            guard let title = alertController.textFields?.last?.text else { return }
 
             let category = Category(context: self.context)
             category.nameCategory = title
@@ -42,8 +42,7 @@ class CategoryController: UITableViewController {
         alertController.addAction(actionCancel)
         return alertController
     }()
-    
-    
+
     private lazy var changeTitleItemAlert: UIAlertController = {
         var alertController = UIAlertController(title: "Change Item", message: .none, preferredStyle: .alert)
         let actionChange = UIAlertAction(title: "Change", style: .default) { _ in
@@ -62,6 +61,7 @@ class CategoryController: UITableViewController {
         alertController.addAction(actionChange)
         return alertController
     }()
+    
     
     //MARK: - View LifeCycle
     override func viewDidLoad() {
