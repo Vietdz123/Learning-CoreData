@@ -15,6 +15,7 @@ struct ItemView: View {
     @State private var showingAlert = false
     @State private var showingAlertEmpty = false
     @State private var nameItem = ""
+    @Environment(\.dismiss) var dissmiss
     
     var body: some View {
         NavigationView {
@@ -26,9 +27,15 @@ struct ItemView: View {
                         Spacer()
                         
                         HStack(alignment: .center, spacing: 8) {
-                            Text("")
-                                .frame(width: 20, height: 20)
-                                .padding(.leading, 15)
+                            Button(action: {
+                                dissmiss()
+                            }, label: {
+                                Image(systemName: "arrowshape.backward")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 20)
+                            })
                             
                             Spacer()
                             
@@ -56,26 +63,27 @@ struct ItemView: View {
                     .padding(.bottom, 8)
                 }
                 .frame(height: 90)
-                //            .alert("Create Item", isPresented: $showingAlert) {
-                //                TextField("", text: $nameItem)
-                //                Button(action: {
-                //                    if nameItem.isEmpty {
-                //                        showingAlertEmpty.toggle()
-                //                        return
-                //                    }
-                //
-                //                    let item = Item(context: context)
-                //                    item.name = nameItem
-                //                    item.toCategory = category
-                //                    saveContext()
-                //
-                //                }, label: {
-                //                    Text("Add")
-                //                })
-                //            }
-                //            .alert("Name cannot empty", isPresented: $showingAlertEmpty) {
-                //
-                //            }
+                .alert("Create Item", isPresented: $showingAlert) {
+                    TextField("", text: $nameItem)
+                    Button(action: {
+                        if nameItem.isEmpty {
+                            showingAlertEmpty.toggle()
+                            return
+                        }
+    
+                        let item = Item(context: context)
+                        item.name = nameItem
+                        item.toCategory = category
+                        saveContext()
+                        items.append(item)
+    
+                    }, label: {
+                        Text("Add")
+                    })
+                }
+                .alert("Name cannot empty", isPresented: $showingAlertEmpty) {
+    
+                }
                 
                 VStack {
                     ForEach(items, id: \.id) { item in
@@ -87,11 +95,10 @@ struct ItemView: View {
                 Spacer()
             }
             .onAppear {
-                //            loadData()
+                            loadData()
             }
             .background(.red)
             .ignoresSafeArea()
-//            .navigationBarHidden(true)
            
         }  
         .navigationTitle("")
