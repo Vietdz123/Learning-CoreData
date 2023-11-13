@@ -1,8 +1,8 @@
 //
 //  Category+CoreDataClass.swift
-//  CoreData-Widget
+//  Wallpaper-WidgetExtension
 //
-//  Created by MAC on 08/11/2023.
+//  Created by MAC on 13/11/2023.
 //
 //
 

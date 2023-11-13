@@ -2,7 +2,7 @@
 //  Item+CoreDataProperties.swift
 //  CoreData-Widget
 //
-//  Created by MAC on 08/11/2023.
+//  Created by MAC on 13/11/2023.
 //
 //
 

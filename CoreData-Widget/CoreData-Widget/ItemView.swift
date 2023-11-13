@@ -9,8 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ItemView: View {
-    let category: Category
-    @State private var items: [Item] = []
+    @StateObject var category: Category
     @Environment(\.managedObjectContext) var context
     @State private var showingAlert = false
     @State private var showingAlertEmpty = false
@@ -74,9 +73,9 @@ struct ItemView: View {
                         let item = Item(context: context)
                         item.name = nameItem
                         item.toCategory = category
+                        category.addToItems(item)
                         saveContext()
-                        items.append(item)
-    
+                        
                     }, label: {
                         Text("Add")
                     })
@@ -86,16 +85,13 @@ struct ItemView: View {
                 }
                 
                 VStack {
-                    ForEach(items, id: \.id) { item in
-                        Text(item.name!)
+                    ForEach(category.itemArray) { item in
+                        Text(item.unwrappedName)
                     }
                 }
                 .padding()
                 
                 Spacer()
-            }
-            .onAppear {
-                            loadData()
             }
             .background(.red)
             .ignoresSafeArea()
@@ -104,29 +100,6 @@ struct ItemView: View {
         .navigationTitle("")
             .navigationBarBackButtonHidden()
             .navigationBarHidden(true)
-    }
-    
-    
-    func loadData(request: NSFetchRequest<Item> = Item.fetchRequest(), precticate: NSPredicate? = nil) {
-        guard let nameCategory = category.name else {
-            return
-        }
-
-        let query = NSPredicate(format: "%K CONTAINS %@", #keyPath(Item.toCategory.name), nameCategory)
-        
-        if let precticate = precticate {
-            let queryCompound = NSCompoundPredicate(andPredicateWithSubpredicates: [precticate, query])
-            request.predicate = queryCompound
-        } else {
-            request.predicate = query
-        }
-        let sort = NSSortDescriptor(key: "name", ascending: true)
-        request.sortDescriptors = [sort]
-        do {
-            self.items = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
     }
     
     func saveContext() {
@@ -140,4 +113,5 @@ struct ItemView: View {
             }
         }
     }
+    
 }

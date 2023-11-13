@@ -19,6 +19,12 @@ Chọn `Codegen` và chọn `Manual/None`, sau đó `Click Editor` và chọn `C
 
 ![](Images-CoreData/create_nsmanagedObject.png)
 
+Sau đó ở phần phần`relationShip`, ta tiến hành sửa trường `To One` sang `To Many`để chỉ rằng 1 `Category` tham chiếu đến nhiều `Item`
+
+![](Images-CoreData/relation_ship.png)
+
+
+
 ## 1.1 Create Class For managed Data
 
 ```swift
@@ -194,6 +200,115 @@ Outpt:
 ![](gif/outpt_case1.gif)
 
 Bạn thấy không, ta chỉ cần add thêm biến mới là cell tự update theo rồi.
+
+# II. Custom Class CoreData
+
+Ở bước trước, ta đã tiến hành render ra các file `CoreData`, như file `Category+CoreDataProperties` sẽ như này:
+
+```swift
+extension Category {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Category> {
+        return NSFetchRequest<Category>(entityName: "Category")
+    }
+
+    @NSManaged public var name: String?
+    @NSManaged public var items: NSSet?
+
+}
+
+// MARK: Generated accessors for items
+extension Category {
+
+    @objc(addItemsObject:)
+    @NSManaged public func addToItems(_ value: Item)
+
+    @objc(removeItemsObject:)
+    @NSManaged public func removeFromItems(_ value: Item)
+
+    @objc(addItems:)
+    @NSManaged public func addToItems(_ values: NSSet)
+
+    @objc(removeItems:)
+    @NSManaged public func removeFromItems(_ values: NSSet)
+
+}
+
+extension Category : Identifiable {
+
+}
+```
+
+Ta sẽ tiến hành đi qua vài điều về class này:
+- `@NSManaged public var items: NSSet?`: Biến `items` ở đây có dạng `NSSet`, lí do bởi vì như ở phần 1, `1 Category relation to many tới Items`. Nhưng kiểu `NSSet` ko phải dạng ta quen thuộc sử dụng, ta muốn nó sử dụng dưới dạng `array` hơn, vì vậy ta thêm đoạn code sau:
+
+```swift
+extension Category {
+    
+    public var unwrappedName: String {
+        return name ?? "Unknown name"
+    }
+    
+    public var itemArray: [Item] {
+        let itemSet = items as? Set<Item> ?? []
+        
+        
+        return itemSet.sorted {
+            $0.unwrappedName < $1.unwrappedName
+        }
+    }
+    
+}
+
+
+extension Item {
+    
+    public var unwrappedName: String {
+        return name ?? "Unknown name"
+    }
+    
+}
+```
+
+- Ta thấy ở phần `render extension Category`, ta có các function như `addToItems(), removeFromItems()` được sử dụng để thêm, sửa xoá `item`.
+
+```swift
+
+@StateObject var category: Category
+
+func addItem() {
+TextField("", text: $nameItem)
+    Button(action: {
+        if nameItem.isEmpty {
+            showingAlertEmpty.toggle()
+            return
+        }
+
+        let item = Item(context: context)
+        item.name = nameItem
+        item.toCategory = category
+        category.addToItems(item)
+        saveContext()
+        
+    }, label: {
+        Text("Add")
+    })
+}
+
+func saveContext() {
+    if context.hasChanges {
+        do {
+            try context.save()
+            
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+}
+```
+
+# III. Core Data + Widget
 
 
 
