@@ -69,23 +69,23 @@ struct DayView: View {
     }
     
     var currentIndexCheckImage: Int {
-        entry.imgViewModel.dayChecklist[id_day]
+        entry.imgViewModel.currentCheckImageRoutine[id_day]
     }
     
     var imageButton: UIImage {
         switch routineType {
         case .random:
-            return imgSrc.dateCheckList[model.day.rawValue].isChecked ?
+            return imgSrc.dateCheckListModel[model.day.rawValue].isChecked ?
             btnCLModel.checkImage[currentIndexCheckImage] : btnCLModel.uncheckImage.shuffled().first ?? UIImage(named: AssetConstant.unchecklistButton)!
         case .single:
-            return imgSrc.dateCheckList[id_day].isChecked ?
+            return imgSrc.dateCheckListModel[id_day].isChecked ?
                   btnCLModel.checkImage.first ?? UIImage(named: AssetConstant.checklistButton)! : btnCLModel.uncheckImage.shuffled().first ?? UIImage(named: AssetConstant.unchecklistButton)!
         case .daily:
             if id_day > btnCLModel.checkImage.count - 1 {
                 return btnCLModel.checkImage.first ?? UIImage(named: AssetConstant.unchecklistButton)!
             }
             
-            return imgSrc.dateCheckList[id_day].isChecked ? btnCLModel.checkImage[id_day] : btnCLModel.uncheckImage.shuffled().first ?? UIImage(named: AssetConstant.unchecklistButton)!
+            return imgSrc.dateCheckListModel[id_day].isChecked ? btnCLModel.checkImage[id_day] : btnCLModel.uncheckImage.shuffled().first ?? UIImage(named: AssetConstant.unchecklistButton)!
         }
     }
     
@@ -101,7 +101,7 @@ struct DayView: View {
                 }
                 
                 Text(model.day.nameDay)
-                    .foregroundColor(ImageDataViewModel.shared.dateCheckList[id_day].isChecked ?
+                    .foregroundColor(imgSrc.dateCheckListModel[id_day].isChecked ?
                         .yellow : .white)
             })
         case .single, .daily:
@@ -113,7 +113,7 @@ struct DayView: View {
                 }
                 
                 Text(model.day.nameDay)
-                    .foregroundColor(ImageDataViewModel.shared.dateCheckList[id_day].isChecked ?
+                    .foregroundColor(imgSrc.dateCheckListModel[id_day].isChecked ?
                         .yellow : .white)
             })
         }

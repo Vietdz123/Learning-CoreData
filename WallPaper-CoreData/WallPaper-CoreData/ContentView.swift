@@ -10,16 +10,17 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Button(action: {
+                WDNetworkManager.shared.requestApi { _ in
+                    print("DEBUG: Done")
+                }
+            }, label: {
+                Text("Load Data")
+            })
         }
         .padding()
         .onAppear {
-            WDNetworkManager.shared.requestApi { _ in
-                print("DEBUG: Done")
-            }
+
         }
     }
 }

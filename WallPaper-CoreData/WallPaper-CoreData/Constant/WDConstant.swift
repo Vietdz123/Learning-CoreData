@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct WDConstant {
-    static let groupConstant = "group.demo.WallPaper"
+    static let groupConstant = "group.demo.wallpapercoredata"
     static let keyPlaceHolder = "choose"
     static let folderButtonChecklistName = "FolderButtonChecklist"
     

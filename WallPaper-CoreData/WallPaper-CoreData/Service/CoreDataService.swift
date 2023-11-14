@@ -19,6 +19,7 @@ class CoreDataService {
         
         do {
             let categories = try context.fetch(request)
+            print("DEBUG: categories \(categories.count)")
             return categories
         } catch {
             print("Error fetching data from context \(error)")
@@ -30,7 +31,6 @@ class CoreDataService {
         let categories = getAllCategory()
         
         let names =  categories.map { $0.unwrappedName }
-        print("DEBUG: \(names)")
         return names
     }
     
@@ -42,25 +42,24 @@ class CoreDataService {
             return item.unwrappedFamily.contains(family.rawValue)
         }
         
+        print("DEBUG: \(filterItems.count) filterItems and \(category.unwrappedName) and \(category.itemArray.count)")
         var images: [UIImage] = []
         filterItems.forEach { item in
-            guard let image = FileService.shared.readImage(item: item) else { return }
+            guard let image = FileService.shared.readImage(with: category.unwrappedName, item: item) else { return }
             images.append(image)
         }
         
-        print("DEBUG: getImages \(images.count)")
         return images
     }
     
     
-    func getCategory(name: String) -> Category {
+    func getCategory(name: String) -> Category? {
         
         let query = NSPredicate(format: "%K CONTAINS %@", #keyPath(Category.name), name)
         let request: NSFetchRequest<Category> = Category.fetchRequest()
         request.predicate = query
         
-        guard let category = try? context.fetch(request).first else { return Category(context: context) }
-        
+        guard let category = try? context.fetch(request).first else { print("DEBUG: init category");  return nil }
         return category
         
     }
@@ -79,24 +78,24 @@ class CoreDataService {
         let items = category.itemArray
         
         let checkItems = items.filter { item in
-            return item.unwrappedFamily.contains(FamilyFolderType.check.rawValue)
+            return item.unwrappedFamily == FamilyFolderType.check.rawValue
         }
         
         let uncheckItems = items.filter { item in
-            return item.unwrappedFamily.contains(FamilyFolderType.uncheck.rawValue)
+            return item.unwrappedFamily == FamilyFolderType.uncheck.rawValue
         }
         
         var checkImages: [UIImage] = []
         var uncheckImages: [UIImage] = []
         
-        
+        print("DEBUG: \(uncheckItems.count) uncheckItems and \(checkItems.count)")
         checkItems.forEach { item in
-            guard let image = FileService.shared.readImage(item: item) else { return }
+            guard let image = FileService.shared.readImage(with: category.unwrappedName, item: item) else { return }
             checkImages.append(image)
         }
         
         uncheckItems.forEach { item in
-            guard let image = FileService.shared.readImage(item: item) else { return }
+            guard let image = FileService.shared.readImage(with: category.unwrappedName, item: item) else { return }
             uncheckImages.append(image)
         }
         
@@ -115,34 +114,9 @@ extension CoreDataService {
                 
             } catch {
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                print("DEBUG: fatal error \(nserror.localizedDescription)")
             }
         }
     }
-    
-//    func loadData(request: NSFetchRequest<Item> = Item.fetchRequest(), precticate: NSPredicate? = nil) {
-//        guard let nameCategory = category.name else {
-//            return
-//        }
-//        
-//        let query = NSPredicate(format: "%K CONTAINS %@", #keyPath(Item.toCategory.name), nameCategory)
-//        
-//        if let precticate = precticate {
-//            let queryCompound = NSCompoundPredicate(andPredicateWithSubpredicates: [precticate, query])
-//            request.predicate = queryCompound
-//        } else {
-//            request.predicate = query
-//        }
-//        let sort = NSSortDescriptor(key: "name", ascending: true)
-//        request.sortDescriptors = [sort]
-//        do {
-//            self.items = try context.fetch(request)
-//        } catch {
-//            print("Error fetching data from context \(error)")
-//        }
-//    }
-    
-
-    
     
 }

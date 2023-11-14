@@ -1,8 +1,8 @@
 //
 //  Item+CoreDataProperties.swift
-//  Wallpaper-WidgetExtension
+//  WallPaper-CoreData
 //
-//  Created by MAC on 13/11/2023.
+//  Created by MAC on 14/11/2023.
 //
 //
 
@@ -20,17 +20,5 @@ extension Item {
     @NSManaged public var family: String?
     @NSManaged public var name: String?
     @NSManaged public var routine_type: String?
-    
-    @NSManaged public var day_mon: Double
-    @NSManaged public var day_sun: Double
-    @NSManaged public var day_tues: Double
-    @NSManaged public var day_wed: Double
-    @NSManaged public var day_thur: Double
-    @NSManaged public var day_fir: Double
-    @NSManaged public var day_sat: Double
-
-}
-
-extension Item : Identifiable {
 
 }

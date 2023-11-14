@@ -15,7 +15,7 @@ struct ImageSource: AppEntity {
     var actualName: String
     static var defaultQuery: ImageQuery = ImageQuery()
     
-    func getCategory() -> Category {
+    func getCategory() -> Category? {
         return CoreDataService.shared.getCategory(name: actualName)
     }
     
@@ -24,27 +24,30 @@ struct ImageSource: AppEntity {
     }
     
     func getButtonChecklistModel() -> ButtonCheckListModel {
-        let cate = getCategory()
+        guard let cate = getCategory() else { return ButtonCheckListModel() }
         
         return CoreDataService.shared.getButtonCheckListModel(category: cate)
     }
     
     func getRoutineType() -> RoutinMonitorType {
-        let cate = getCategory()
+        guard let cate = getCategory() else { return .single }
+        
         return CoreDataService.shared.getRoutineType(with: cate.unwrappedRoutineType)
         
     }
     
     func getFolderType() -> WDFolderType {
-        let cate = getCategory()
+        guard let cate = getCategory() else { return .placeholder }
         
         return CoreDataService.shared.getFolderType(with: cate.unwrappedFolder)
     }
             
     func getImages(family: FamilyFolderType) -> [UIImage] {
-        let cate = getCategory()
+        guard let cate = getCategory() else { return [UIImage(named: AssetConstant.imagePlacehodel)!] }
+        let images = CoreDataService.shared.getImages(category: cate, family: family)
         
-        return CoreDataService.shared.getImages(category: cate, family: family)
+        print("DEBUG: \(images.count) images")
+        return images
     }
     
     static func getSuggested() -> [ImageSource] {
@@ -87,7 +90,10 @@ struct ImageQuery: EntityStringQuery {
         }
         
         if imgs.count > 0 && WidgetViewModel.shared.dict[imgs[0].actualName] == nil {
-            WidgetViewModel.shared.dict[imgs[0].actualName] = ImageDataViewModel()
+            if let cate = CoreDataService.shared.getCategory(name: imgs[0].actualName)  {
+                WidgetViewModel.shared.dict[imgs[0].actualName] = ImageDataViewModel()
+                WidgetViewModel.shared.dict[imgs[0].actualName]?.loadData(category: cate)
+            }
         }
         
         if imgs.count > 0 {

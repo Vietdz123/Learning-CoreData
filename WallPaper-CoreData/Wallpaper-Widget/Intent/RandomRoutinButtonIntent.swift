@@ -30,21 +30,37 @@ struct RandomRoutinButtonIntent: AppIntent {
     
     func perform() async throws -> some IntentResult & ReturnsValue {
         print("DEBUG: goto perform RandomRoutinButtonIntent")
+
+        guard let viewModel = WidgetViewModel.shared.dict[id_name],
+              let category = viewModel.category else {return .result()}
+        let images = viewModel.checkedImages
         
-        guard let imgViewModel = WidgetViewModel.shared.dict[id_name] else {return .result()}
-        let images = imgViewModel.checkedImages
-        
-        if !imgViewModel.dateCheckList[id_day].isChecked {
-            imgViewModel.dateCheckList[id_day].isChecked.toggle()
+        if category.isCheckedRoutine.count < id_day {
             return .result()
         }
         
-        if imgViewModel.dayChecklist[id_day] < images.count - 1 {
-            imgViewModel.dayChecklist[id_day] += 1
-        } else {
-            imgViewModel.dateCheckList[id_day].isChecked.toggle()
-            imgViewModel.dayChecklist[id_day] = 0
+        if !category.isCheckedRoutine[id_day] {
+            
+            category.isCheckedRoutine[id_day].toggle()
+            CoreDataService.shared.saveContext()
+            
+            return .result()
         }
+        
+        if Int(category.currentCheckImageRoutine[id_day]) < images.count - 1 {
+            category.currentCheckImageRoutine[id_day] += 1
+        } else {
+            category.isCheckedRoutine[id_day].toggle()
+            category.currentCheckImageRoutine[id_day] = 0
+        }
+        CoreDataService.shared.saveContext()
+        
+//        if imgViewModel.currentCheckImageRoutine[id_day] < images.count - 1 {
+//            imgViewModel.currentCheckImageRoutine[id_day] += 1
+//        } else {
+//            imgViewModel.dateCheckListModel[id_day].isChecked.toggle()
+//            imgViewModel.currentCheckImageRoutine[id_day] = 0
+//        }
         
 
         return .result()

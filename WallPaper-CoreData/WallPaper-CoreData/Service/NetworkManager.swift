@@ -17,7 +17,7 @@ enum WDNetworkManagerConstant {
 }
 
 class WDNetworkManager {
-    var context = DataController().container.viewContext
+    let context = CoreDataService.shared.context
     
     static let shared = WDNetworkManager()
 
@@ -60,14 +60,26 @@ class WDNetworkManager {
     private func downloadFileCoreData(data: EztWidget, completion: @escaping(() -> Void)) {
         let dispathGroup = DispatchGroup()
         let folderType = WDFolderType.getType(name: data.category.name)
+        let foldername = "\(folderType.nameId) \(data.id)"
+        
+        let existCate = CoreDataService.shared.getCategory(name: foldername)
+        if let existCate = existCate {
+            if let items = existCate.items {
+                existCate.removeFromItems(items)
+            }
+            
+            self.context.delete(existCate)
+        }
         
         let category = Category(context: context)
         category.folderType = folderType.rawValue
-        category.name = "\(folderType.nameId) \(data.id)"
+        category.name = foldername
         category.creationDate = Date().timeIntervalSinceNow
+        category.currentCheckImageRoutine = Array(repeating: 0, count: 7)
+        category.isCheckedRoutine = Array(repeating: false, count: 7)
         if folderType == .routineMonitor {
-            let typeRoutine = RoutinMonitorType.getType(name: data.tags[0].name).nameId
-            category.routineType = typeRoutine
+            let routineType = RoutinMonitorType.getType(name: data.tags[0].name).nameId
+            category.routineType = routineType
         }
         
         for (index, path) in data.path.enumerated() {
@@ -77,13 +89,14 @@ class WDNetworkManager {
             let familyType = FamilyFolderType.getType(name: path.key_type)
             let item = Item(context: context)
             item.family = familyType.rawValue
-            item.creationDate = Date().timeIntervalSinceNow + Double(100 * index)
+            item.creationDate = Date().timeIntervalSinceNow + Double(10000 * index)
             item.name = path.file_name
             item.routine_type = (folderType == .routineMonitor) ? RoutinMonitorType.getType(name: data.tags[0].name).nameId : nil
             
+            
             guard let url = URL(string: path.url.full),
-                  let file = FileService.shared.relativePath?.appendingPathComponent("\(path.file_name)")
-            else { context.reset(); dispathGroup.leave(); completion(); return }
+                  let file = FileService.relativePath(with: foldername)?.appendingPathComponent("\(path.file_name)")
+            else {  context.reset(); dispathGroup.leave(); completion(); return }
             
             let urlRequest = URLRequest(url: url)
 
@@ -93,10 +106,11 @@ class WDNetworkManager {
                 
                 guard let urlResponse = urlResponse else  { self.context.reset(); dispathGroup.leave(); completion(); return  }
                 
-                FileService.shared.writeToSource(with: urlResponse, to: file)
+                FileService.shared.writeToSource(with: foldername, with: urlResponse, to: file)
                 
                 category.addToItems(item)
                 self.saveContext()
+                
                 
                 dispathGroup.leave()
                 
@@ -104,6 +118,7 @@ class WDNetworkManager {
         }
         
         dispathGroup.notify(queue: .main) {
+            print("DEBUG: \(category.itemArray.count) and \(category.unwrappedName) unwrappedName")
             completion()
         }
         

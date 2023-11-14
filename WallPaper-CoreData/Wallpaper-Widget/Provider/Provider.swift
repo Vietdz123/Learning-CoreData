@@ -14,12 +14,12 @@ struct Provider: AppIntentTimelineProvider {
     
     func placeholder(in context: Context) -> SourceImageEntry {
         print("DEBUG: goto placeholder")
-        return SourceImageEntry(image: UIImage(named: AssetConstant.imagePlacehodel)!, size: context.displaySize, type: .placeholder, btnChecklistModel: ButtonCheckListModel(), imgViewModel: ImageDataViewModel.shared, imgSrc: ImageSource(id: "img", actualName: "img"), routineType: .single)
+        return SourceImageEntry(image: UIImage(named: AssetConstant.imagePlacehodel)!, size: context.displaySize, type: .placeholder, btnChecklistModel: ButtonCheckListModel(), imgViewModel: ImageDataViewModel(), imgSrc: ImageSource(id: "img", actualName: "img"), routineType: .single)
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SourceImageEntry {
         print("DEBUG: goto snapshot")
-        return SourceImageEntry(image: UIImage(named: AssetConstant.imagePlacehodel)!, size: context.displaySize, type: .placeholder, btnChecklistModel: ButtonCheckListModel(), imgViewModel: ImageDataViewModel.shared, imgSrc: ImageSource(id: "img", actualName: "img"), routineType: .single)
+        return SourceImageEntry(image: UIImage(named: AssetConstant.imagePlacehodel)!, size: context.displaySize, type: .placeholder, btnChecklistModel: ButtonCheckListModel(), imgViewModel: ImageDataViewModel(), imgSrc: ImageSource(id: "img", actualName: "img"), routineType: .single)
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SourceImageEntry> {
@@ -28,6 +28,7 @@ struct Provider: AppIntentTimelineProvider {
          
         let imgSrc = WidgetViewModel.shared.dict[configuration.imageSrc.actualName] ?? ImageDataViewModel()
         
+        imgSrc.loadData(category: configuration.imageSrc.getCategory())
         switch context.family {
         case .systemSmall, .systemLarge:
             imgSrc.images = configuration.imageSrc.getImages(family: .square)

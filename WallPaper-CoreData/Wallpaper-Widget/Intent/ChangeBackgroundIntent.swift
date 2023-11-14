@@ -27,11 +27,9 @@ struct ChangeBackgroundIntent: AppIntent {
     }
     
     func perform() async throws -> some IntentResult {
-
-//        print("DEBUG: push notifi")
-//        NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
         
         WidgetViewModel.shared.dict[id_name]?.updateCurrentIndex()
+        
         return .result()
     }
     

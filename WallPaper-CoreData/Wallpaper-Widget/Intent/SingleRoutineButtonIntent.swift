@@ -29,9 +29,14 @@ struct SingleRoutineButtonIntent: AppIntent {
     }
     
     func perform() async throws -> some IntentResult & ReturnsValue {
-        print("DEBUG: goto perform ToggleButtonIntent")
+        print("DEBUG: goto perform ToggleButtonIntent \(WidgetViewModel.shared.dict[id_name]?.category?.isCheckedRoutine.count)")
+
+        if WidgetViewModel.shared.dict[id_name]?.category?.isCheckedRoutine.count ?? 0 > id_day - 1 {
+            WidgetViewModel.shared.dict[id_name]?.category?.isCheckedRoutine[id_day].toggle()
+            CoreDataService.shared.saveContext()
+        }
         
-        WidgetViewModel.shared.dict[id_name]?.dateCheckList[id_day].isChecked.toggle()
+        
         return .result()
     }
     

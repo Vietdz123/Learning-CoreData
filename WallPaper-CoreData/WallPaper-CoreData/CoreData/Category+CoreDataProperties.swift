@@ -1,8 +1,8 @@
 //
 //  Category+CoreDataProperties.swift
-//  Wallpaper-WidgetExtension
+//  WallPaper-CoreData
 //
-//  Created by MAC on 13/11/2023.
+//  Created by MAC on 14/11/2023.
 //
 //
 
@@ -17,9 +17,9 @@ extension Category {
     }
 
     @NSManaged public var creationDate: Double
+    @NSManaged public var currentIndexDigitalFriend: Double
     @NSManaged public var folderType: String?
     @NSManaged public var name: String?
-    @NSManaged public var currentIndexDigitalFriend: Double
     @NSManaged public var routineType: String?
     @NSManaged public var items: NSSet?
 
@@ -39,9 +39,5 @@ extension Category {
 
     @objc(removeItems:)
     @NSManaged public func removeFromItems(_ values: NSSet)
-
-}
-
-extension Category : Identifiable {
 
 }
