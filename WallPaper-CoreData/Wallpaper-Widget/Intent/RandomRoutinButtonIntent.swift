@@ -54,14 +54,6 @@ struct RandomRoutinButtonIntent: AppIntent {
             category.currentCheckImageRoutine[id_day] = 0
         }
         CoreDataService.shared.saveContext()
-        
-//        if imgViewModel.currentCheckImageRoutine[id_day] < images.count - 1 {
-//            imgViewModel.currentCheckImageRoutine[id_day] += 1
-//        } else {
-//            imgViewModel.dateCheckListModel[id_day].isChecked.toggle()
-//            imgViewModel.currentCheckImageRoutine[id_day] = 0
-//        }
-        
 
         return .result()
     }

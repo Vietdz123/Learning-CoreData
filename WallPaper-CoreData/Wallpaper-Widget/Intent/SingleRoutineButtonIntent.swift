@@ -29,7 +29,7 @@ struct SingleRoutineButtonIntent: AppIntent {
     }
     
     func perform() async throws -> some IntentResult & ReturnsValue {
-        print("DEBUG: goto perform ToggleButtonIntent \(WidgetViewModel.shared.dict[id_name]?.category?.isCheckedRoutine.count)")
+        print("DEBUG: goto perform SingleRoutineButtonIntent")
 
         if WidgetViewModel.shared.dict[id_name]?.category?.isCheckedRoutine.count ?? 0 > id_day - 1 {
             WidgetViewModel.shared.dict[id_name]?.category?.isCheckedRoutine[id_day].toggle()

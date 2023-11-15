@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AVFoundation
+import Lottie
 
 @main
 struct WallPaper_CoreDataApp: App {
@@ -15,6 +17,16 @@ struct WallPaper_CoreDataApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
+                .onAppear {
+                    let audioSession = AVAudioSession.sharedInstance()
+                    do {
+                        try audioSession.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default)
+                        try AVAudioSession.sharedInstance().setActive(true)
+                        print("DEBUG: setup success")
+                    } catch let error as NSError {
+                        print("Setting category to AVAudioSessionCategoryPlayback failed: \(error)")
+                    }
+                }
         }
     }
 }

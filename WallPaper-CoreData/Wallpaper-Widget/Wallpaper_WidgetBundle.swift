@@ -28,14 +28,24 @@ struct WallpaperWidget: Widget {
             WallpaperWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
                 .onAppear {
-                    do {
-                        try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers, .allowAirPlay])
-                        print("Playback OK")
-                        try AVAudioSession.sharedInstance().setActive(true)
-                        print("Session is Active")
-                    } catch {
-                        print("DEBUG: \(error)")
-                    }
+                    
+                        let audioSession = AVAudioSession.sharedInstance()
+                        do {
+                            try audioSession.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default)
+                            try AVAudioSession.sharedInstance().setActive(true)
+                            print("DEBUG: setup success")
+                        } catch let error as NSError {
+                            print("Setting category to AVAudioSessionCategoryPlayback failed: \(error)")
+                        }
+                    
+//                    do {
+//                        try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers, .allowAirPlay])
+//                        print("Playback OK")
+//                        try AVAudioSession.sharedInstance().setActive(true)
+//                        print("Session is Active")
+//                    } catch {
+//                        print("DEBUG: \(error.localizedDescription) error")
+//                    }
                 }
         }
         .contentMarginsDisabled()

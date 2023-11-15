@@ -34,6 +34,7 @@ class WDNetworkManager {
                 guard let data = data else { completion(false); return }
                 
                 do {
+                    print("DEBUG: \(try? JSONSerialization.jsonObject(with: data))")
                     let response = try JSONDecoder().decode(EztWidgetResponse.self, from: data)
                     
                     response.data.data.forEach { ezWidget in
@@ -77,12 +78,23 @@ class WDNetworkManager {
         category.creationDate = Date().timeIntervalSinceNow
         category.currentCheckImageRoutine = Array(repeating: 0, count: 7)
         category.isCheckedRoutine = Array(repeating: false, count: 7)
+        category.hasSound = false
+        
         if folderType == .routineMonitor {
             let routineType = RoutinMonitorType.getType(name: data.tags[0].name).nameId
             category.routineType = routineType
         }
         
-        for (index, path) in data.path.enumerated() {
+        var widgetPath = data.path
+        if let sounds = data.sound {
+            widgetPath = sounds.map { sound in
+                return WidgetPath(file_name: sound.file_name, key_type: sound.key_type, type_file: sound.type_file, url: sound.url)
+            } + data.path
+            category.hasSound = !sounds.isEmpty
+            print("DEBUG: sounds")
+        }
+
+        for (index, path) in widgetPath.enumerated()  {
                 
             dispathGroup.enter()
             
@@ -118,7 +130,6 @@ class WDNetworkManager {
         }
         
         dispathGroup.notify(queue: .main) {
-            print("DEBUG: \(category.itemArray.count) and \(category.unwrappedName) unwrappedName")
             completion()
         }
         

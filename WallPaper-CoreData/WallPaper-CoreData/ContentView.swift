@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AVFoundation
+//import Lottie
 
 struct ContentView: View {
     var body: some View {
@@ -17,11 +19,9 @@ struct ContentView: View {
             }, label: {
                 Text("Load Data")
             })
+            
         }
         .padding()
-        .onAppear {
-
-        }
     }
 }
 

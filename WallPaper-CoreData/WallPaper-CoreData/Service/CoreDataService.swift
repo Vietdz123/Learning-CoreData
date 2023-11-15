@@ -73,6 +73,22 @@ class CoreDataService {
         return RoutinMonitorType.getType(name: nameRoutine)
     }
     
+    func getSounds(category: Category, family: FamilyFolderType) -> [URL] {
+        let items = category.itemArray
+        
+        let filterItems = items.filter { item in
+            return item.unwrappedFamily.contains(family.rawValue)
+        }
+        
+        var urls: [URL] = []
+        filterItems.forEach { item in
+            guard let url = FileService.shared.readUrls(with: category.unwrappedName, item: item) else { return }
+            urls.append(url)
+        }
+        
+        return urls
+    }
+    
     func getButtonCheckListModel(category: Category) -> ButtonCheckListModel {
         
         let items = category.itemArray
@@ -88,7 +104,6 @@ class CoreDataService {
         var checkImages: [UIImage] = []
         var uncheckImages: [UIImage] = []
         
-        print("DEBUG: \(uncheckItems.count) uncheckItems and \(checkItems.count)")
         checkItems.forEach { item in
             guard let image = FileService.shared.readImage(with: category.unwrappedName, item: item) else { return }
             checkImages.append(image)
@@ -115,6 +130,8 @@ extension CoreDataService {
             } catch {
                 let nserror = error as NSError
                 print("DEBUG: fatal error \(nserror.localizedDescription)")
+                fatalError("Error CoreData saveContext")
+                
             }
         }
     }

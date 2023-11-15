@@ -5,6 +5,7 @@
         <attribute name="currentCheckImageRoutine" optional="YES" attributeType="Transformable" valueTransformerName="ArrayTransformer"/>
         <attribute name="currentIndexDigitalFriend" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="folderType" optional="YES" attributeType="String"/>
+        <attribute name="hasSound" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isCheckedRoutine" optional="YES" attributeType="Transformable" valueTransformerName="ArrayBoolTransformer"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="routineType" optional="YES" attributeType="String"/>

@@ -23,16 +23,10 @@ class ImageDataViewModel {
     }
     var category: Category?
     
-    
-    
     func loadData(category: Category?) {
-        guard let category = category else { print("DEBUG: return huhu"); return }
+        guard let category = category else { return }
         self.category = category
-        if category.isCheckedRoutine.isEmpty {
-            self.dateCheckListModel = [.init(day: .sunday), .init(day: .monday), .init(day: .tuesday),
-                                         .init(day: .wednesday), .init(day: .friday), .init(day: .thursday),
-                                         .init(day: .saturday)]
-        } else {
+        if !category.isCheckedRoutine.isEmpty {
             self.dateCheckListModel = [.init(day: .sunday, isChecked: category.isCheckedRoutine[0]),
                                        .init(day: .monday, isChecked: category.isCheckedRoutine[1]),
                                        .init(day: .tuesday, isChecked: category.isCheckedRoutine[2]),
@@ -40,15 +34,10 @@ class ImageDataViewModel {
                                        .init(day: .wednesday, isChecked: category.isCheckedRoutine[4]),
                                         .init(day: .friday, isChecked: category.isCheckedRoutine[5]),
                                        .init(day: .saturday, isChecked: category.isCheckedRoutine[6])]
-            print("DEBUG: \(category.isCheckedRoutine)")
         }
-
-        if category.isCheckedRoutine.isEmpty {
-            self.currentCheckImageRoutine = Array(repeating: 0, count: 7)
-        } else {
+        if !category.isCheckedRoutine.isEmpty {
             self.currentCheckImageRoutine = category.currentCheckImageRoutine.map { Int($0)}
         }
-        
     }
     
      func updateCurrentIndex() {

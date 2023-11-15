@@ -13,6 +13,8 @@ enum FamilyFolderType: String, CaseIterable {
     case rectangle = "rectangle"
     case check = "check"
     case uncheck = "uncheck"
+    case singleSound = "single_sound"
+    case multiSound = "multi_sound"
     
     static func getType(name: String) -> FamilyFolderType {
         

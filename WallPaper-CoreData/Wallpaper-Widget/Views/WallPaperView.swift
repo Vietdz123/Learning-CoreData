@@ -25,7 +25,7 @@ struct WallpaperWidgetEntryView : View {
     var entry: SourceImageEntry
 
     var body: some View {
- 
+
         switch entry.type {
             
         case .digitalFriend:

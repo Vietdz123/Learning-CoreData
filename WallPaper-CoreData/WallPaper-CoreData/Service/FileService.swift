@@ -27,6 +27,13 @@ class FileService {
         return image
     }
     
+    
+    func readUrls(with nameFolder: String, item: Item) -> URL? {
+        guard let url = FileService.relativePath(with: nameFolder)?.appendingPathComponent(item.unwrappedName) else { return nil }
+        
+        return url
+    }
+    
 
     
     func writeToSource(with namefolder: String,

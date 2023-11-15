@@ -1,0 +1,6 @@
+framework module Pods_WallPaper_CoreData {
+  umbrella header "Pods-WallPaper-CoreData-umbrella.h"
+
+  export *
+  module * { export * }
+}

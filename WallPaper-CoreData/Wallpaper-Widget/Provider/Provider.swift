@@ -48,6 +48,13 @@ struct Provider: AppIntentTimelineProvider {
         let routineType = configuration.imageSrc.getRoutineType()
         WidgetViewModel.shared.dict[configuration.imageSrc.actualName]?.checkedImages = btnCLModel.checkImage
         
+        if imgSrc.category?.hasSound == true && SoundPlayer.shared.player.rate == 0 { //Rate cho vao cho vui
+            print("DEBUG: play music")
+            imgSrc.updateCurrentIndex()
+        } else {
+            print("DEBUG: đel music \(imgSrc.category?.hasSound) and \(SoundPlayer.shared.player.rate)")
+        }
+        
         let entry = SourceImageEntry(image: image,
                                      size: size,
                                      type: type,

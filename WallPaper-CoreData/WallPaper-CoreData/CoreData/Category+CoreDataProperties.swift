@@ -2,7 +2,7 @@
 //  Category+CoreDataProperties.swift
 //  WallPaper-CoreData
 //
-//  Created by MAC on 14/11/2023.
+//  Created by MAC on 15/11/2023.
 //
 //
 
@@ -21,6 +21,7 @@ extension Category {
     @NSManaged public var folderType: String?
     @NSManaged public var name: String?
     @NSManaged public var routineType: String?
+    @NSManaged public var hasSound: Bool
     @NSManaged public var items: NSSet?
 
 }

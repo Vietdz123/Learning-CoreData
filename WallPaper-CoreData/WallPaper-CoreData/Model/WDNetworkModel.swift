@@ -21,6 +21,7 @@ struct WidgetData: Codable {
 struct EztWidget: Codable {
     let id: Int
     let thumbnail: [Thumbnail]
+    let sound: [WidgetSound]?
     let path: [WidgetPath]
     let category_id: Int
     let is_trend: Int
@@ -41,6 +42,13 @@ struct EztWidget: Codable {
 }
 
 struct Thumbnail: Codable {
+    let file_name: String
+    let key_type: String
+    let type_file: String
+    let url: PathURL
+}
+
+struct WidgetSound: Codable {
     let file_name: String
     let key_type: String
     let type_file: String
