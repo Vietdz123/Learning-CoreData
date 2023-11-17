@@ -38,14 +38,24 @@
 		045673C92B0222C600D7B28F /* RandomRoutinButtonIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045673C52B0222C600D7B28F /* RandomRoutinButtonIntent.swift */; };
 		045673CA2B0222C600D7B28F /* SourceMakerIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045673C62B0222C600D7B28F /* SourceMakerIntent.swift */; };
 		045673CB2B0222C600D7B28F /* SingleRoutineButtonIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045673C72B0222C600D7B28F /* SingleRoutineButtonIntent.swift */; };
+		047D4E7E2B05AD2C00CD0A10 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 047D4E7D2B05AD2C00CD0A10 /* Lottie */; };
+		047D4E7F2B05AD6500CD0A10 /* LottieWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048407EC2B04B80000381846 /* LottieWrapper.swift */; };
+		047D4E812B05B11100CD0A10 /* gif_test.gif in Resources */ = {isa = PBXBuildFile; fileRef = 047D4E802B05B11100CD0A10 /* gif_test.gif */; };
+		047D4E842B05B1EB00CD0A10 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 047D4E832B05B1EB00CD0A10 /* SDWebImageSwiftUI */; };
+		047D4E862B05B26100CD0A10 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 047D4E852B05B26100CD0A10 /* SDWebImageSwiftUI */; };
+		047D4E872B05B26600CD0A10 /* gif_test.gif in Resources */ = {isa = PBXBuildFile; fileRef = 047D4E802B05B11100CD0A10 /* gif_test.gif */; };
+		047D4E882B05CA9400CD0A10 /* SourceMakerIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045673C62B0222C600D7B28F /* SourceMakerIntent.swift */; };
 		0484079D2B046E5C00381846 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484079C2B046DA500381846 /* Category+CoreDataProperties.swift */; };
 		0484079E2B046E5C00381846 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484079B2B046DA500381846 /* Category+CoreDataClass.swift */; };
 		0484079F2B046E5C00381846 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484079C2B046DA500381846 /* Category+CoreDataProperties.swift */; };
 		048407A02B046E5C00381846 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484079B2B046DA500381846 /* Category+CoreDataClass.swift */; };
 		048407A72B04A7BA00381846 /* sample-3s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 048407A52B04A7BA00381846 /* sample-3s.mp3 */; };
 		048407A82B04A7BA00381846 /* file_example_MP4_480_1_5MG.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 048407A62B04A7BA00381846 /* file_example_MP4_480_1_5MG.mp4 */; };
-		048407A92B04A97100381846 /* SourceMakerIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045673C62B0222C600D7B28F /* SourceMakerIntent.swift */; };
 		048407AA2B04A99000381846 /* ImageDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045673BE2B02228500D7B28F /* ImageDataViewModel.swift */; };
+		048407EA2B04B67C00381846 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 048407E92B04B67C00381846 /* Lottie */; };
+		048407ED2B04B80000381846 /* LottieWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048407EC2B04B80000381846 /* LottieWrapper.swift */; };
+		048407F02B04B8E400381846 /* go_mo.json in Resources */ = {isa = PBXBuildFile; fileRef = 048407EF2B04B8E400381846 /* go_mo.json */; };
+		048407F12B04B8E400381846 /* go_mo.json in Resources */ = {isa = PBXBuildFile; fileRef = 048407EF2B04B8E400381846 /* go_mo.json */; };
 		04845CE92B030890005ABAEB /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845CE72B03087D005ABAEB /* Item+CoreDataProperties.swift */; };
 		04845CEA2B030890005ABAEB /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845CE62B03087D005ABAEB /* Item+CoreDataClass.swift */; };
 		04845CED2B030890005ABAEB /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04845CE72B03087D005ABAEB /* Item+CoreDataProperties.swift */; };
@@ -117,11 +127,14 @@
 		045673C52B0222C600D7B28F /* RandomRoutinButtonIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomRoutinButtonIntent.swift; sourceTree = "<group>"; };
 		045673C62B0222C600D7B28F /* SourceMakerIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceMakerIntent.swift; sourceTree = "<group>"; };
 		045673C72B0222C600D7B28F /* SingleRoutineButtonIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleRoutineButtonIntent.swift; sourceTree = "<group>"; };
+		047D4E802B05B11100CD0A10 /* gif_test.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif_test.gif; sourceTree = "<group>"; };
 		0484079B2B046DA500381846 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0484079C2B046DA500381846 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		048407A12B047D8500381846 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		048407A52B04A7BA00381846 /* sample-3s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sample-3s.mp3"; sourceTree = "<group>"; };
 		048407A62B04A7BA00381846 /* file_example_MP4_480_1_5MG.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = file_example_MP4_480_1_5MG.mp4; sourceTree = "<group>"; };
+		048407EC2B04B80000381846 /* LottieWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWrapper.swift; sourceTree = "<group>"; };
+		048407EF2B04B8E400381846 /* go_mo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = go_mo.json; sourceTree = "<group>"; };
 		04845CE62B03087D005ABAEB /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		04845CE72B03087D005ABAEB /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0485EAE92B01C8DA00C2C6DF /* WallPaper-CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WallPaper-CoreData.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,9 +166,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				047D4E862B05B26100CD0A10 /* SDWebImageSwiftUI in Frameworks */,
 				045673762B0206C300D7B28F /* SwiftUI.framework in Frameworks */,
 				045673742B0206C300D7B28F /* WidgetKit.framework in Frameworks */,
 				BF3DB7D2932A2B57E809DDB7 /* Pods_Wallpaper_WidgetExtension.framework in Frameworks */,
+				047D4E7E2B05AD2C00CD0A10 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +178,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				047D4E842B05B1EB00CD0A10 /* SDWebImageSwiftUI in Frameworks */,
 				7682CF9B670042E319E7721F /* Pods_WallPaper_CoreData.framework in Frameworks */,
+				048407EA2B04B67C00381846 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +254,15 @@
 			path = "Model-Widgets";
 			sourceTree = "<group>";
 		};
+		048407EB2B04B7EE00381846 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				048407EC2B04B80000381846 /* LottieWrapper.swift */,
+				048407EF2B04B8E400381846 /* go_mo.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		0485EAE02B01C8DA00C2C6DF = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +287,7 @@
 		0485EAEB2B01C8DA00C2C6DF /* WallPaper-CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				048407EB2B04B7EE00381846 /* Lottie */,
 				048407A12B047D8500381846 /* Info.plist */,
 				0456736C2B02023C00D7B28F /* WallPaper-CoreData.entitlements */,
 				0485EB182B01CA8E00C2C6DF /* CoreData */,
@@ -269,6 +296,7 @@
 				0485EAFD2B01CA2200C2C6DF /* Service */,
 				0485EAEC2B01C8DA00C2C6DF /* WallPaper_CoreDataApp.swift */,
 				0485EAEE2B01C8DA00C2C6DF /* ContentView.swift */,
+				047D4E802B05B11100CD0A10 /* gif_test.gif */,
 				0485EAF02B01C8DB00C2C6DF /* Assets.xcassets */,
 				0485EAF22B01C8DB00C2C6DF /* Preview Content */,
 			);
@@ -364,6 +392,10 @@
 			dependencies = (
 			);
 			name = "Wallpaper-WidgetExtension";
+			packageProductDependencies = (
+				047D4E7D2B05AD2C00CD0A10 /* Lottie */,
+				047D4E852B05B26100CD0A10 /* SDWebImageSwiftUI */,
+			);
 			productName = "Wallpaper-WidgetExtension";
 			productReference = 045673712B0206C200D7B28F /* Wallpaper-WidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -384,6 +416,10 @@
 				045673822B0206C400D7B28F /* PBXTargetDependency */,
 			);
 			name = "WallPaper-CoreData";
+			packageProductDependencies = (
+				048407E92B04B67C00381846 /* Lottie */,
+				047D4E832B05B1EB00CD0A10 /* SDWebImageSwiftUI */,
+			);
 			productName = "WallPaper-CoreData";
 			productReference = 0485EAE92B01C8DA00C2C6DF /* WallPaper-CoreData.app */;
 			productType = "com.apple.product-type.application";
@@ -417,6 +453,7 @@
 			mainGroup = 0485EAE02B01C8DA00C2C6DF;
 			packageReferences = (
 				048407B02B04B37200381846 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				047D4E822B05B1DA00CD0A10 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 0485EAEA2B01C8DA00C2C6DF /* Products */;
 			projectDirPath = "";
@@ -434,8 +471,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				048407A72B04A7BA00381846 /* sample-3s.mp3 in Resources */,
+				048407F12B04B8E400381846 /* go_mo.json in Resources */,
 				048407A82B04A7BA00381846 /* file_example_MP4_480_1_5MG.mp4 in Resources */,
 				0456737F2B0206C400D7B28F /* Assets.xcassets in Resources */,
+				047D4E872B05B26600CD0A10 /* gif_test.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,7 +483,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0485EAF42B01C8DB00C2C6DF /* Preview Assets.xcassets in Resources */,
+				047D4E812B05B11100CD0A10 /* gif_test.gif in Resources */,
 				0485EAF12B01C8DB00C2C6DF /* Assets.xcassets in Resources */,
+				048407F02B04B8E400381846 /* go_mo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +543,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				047D4E7F2B05AD6500CD0A10 /* LottieWrapper.swift in Sources */,
 				045673AD2B0210CB00D7B28F /* NetworkManager.swift in Sources */,
 				045673CB2B0222C600D7B28F /* SingleRoutineButtonIntent.swift in Sources */,
 				045673A82B0210BD00D7B28F /* WDFolderType.swift in Sources */,
@@ -550,7 +592,9 @@
 				0484079D2B046E5C00381846 /* Category+CoreDataProperties.swift in Sources */,
 				0485EB072B01CA4600C2C6DF /* FolderModel.swift in Sources */,
 				04845CEE2B030890005ABAEB /* Item+CoreDataClass.swift in Sources */,
+				047D4E882B05CA9400CD0A10 /* SourceMakerIntent.swift in Sources */,
 				045673962B02088500D7B28F /* CoreDataService.swift in Sources */,
+				048407ED2B04B80000381846 /* LottieWrapper.swift in Sources */,
 				0485EB0B2B01CA5200C2C6DF /* WDConstant.swift in Sources */,
 				0485EAEF2B01C8DA00C2C6DF /* ContentView.swift in Sources */,
 				0485EB292B01D6AF00C2C6DF /* DataController.swift in Sources */,
@@ -558,7 +602,6 @@
 				0484079E2B046E5C00381846 /* Category+CoreDataClass.swift in Sources */,
 				0485EB252B01CC3F00C2C6DF /* CategoryExtension.swift in Sources */,
 				0485EAED2B01C8DA00C2C6DF /* WallPaper_CoreDataApp.swift in Sources */,
-				048407A92B04A97100381846 /* SourceMakerIntent.swift in Sources */,
 				0485EAFC2B01C8FD00C2C6DF /* WidgetModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -850,6 +893,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		047D4E822B05B1DA00CD0A10 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.4;
+			};
+		};
 		048407B02B04B37200381846 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -859,6 +910,29 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		047D4E7D2B05AD2C00CD0A10 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 048407B02B04B37200381846 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		047D4E832B05B1EB00CD0A10 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 047D4E822B05B1DA00CD0A10 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		047D4E852B05B26100CD0A10 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 047D4E822B05B1DA00CD0A10 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		048407E92B04B67C00381846 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 048407B02B04B37200381846 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0485EAFA2B01C8FD00C2C6DF /* WidgetModel.xcdatamodeld */ = {

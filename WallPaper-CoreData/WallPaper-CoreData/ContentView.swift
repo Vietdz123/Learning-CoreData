@@ -7,7 +7,7 @@
 
 import SwiftUI
 import AVFoundation
-//import Lottie
+import SDWebImageSwiftUI
 
 struct ContentView: View {
     var body: some View {
@@ -19,6 +19,16 @@ struct ContentView: View {
             }, label: {
                 Text("Load Data")
             })
+//            LottieWrapper()
+//                .frame(maxWidth: .infinity, maxHeight: 500)
+//            
+//            AnimatedImage(name: "gif_test.gif")
+//                .frame(maxWidth: .infinity)
+//                .frame(height: 300)
+            WidgetView()
+            
+            
+
             
         }
         .padding()

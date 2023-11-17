@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+enum UpdateCurrentType {
+    
+    case reset
+    case plus
+    
+}
+
 class ImageDataViewModel {
     
     let context = DataController().container.viewContext
@@ -40,16 +47,22 @@ class ImageDataViewModel {
         }
     }
     
-     func updateCurrentIndex() {
-        if images.count == 0 { return }
+     func updateCurrentIndex()  {
+         if images.count == 0 { return SoundPlayer.shared.updateStatus = .reset }
         
         if currentIndex < images.count - 1 {
             category?.currentIndexDigitalFriend += 1
+     
+            SoundPlayer.shared.updateStatus = .plus
         } else {
             category?.currentIndexDigitalFriend = 0
+            CoreDataService.shared.saveContext()
+            
+            SoundPlayer.shared.updateStatus = .reset
         }
          
          CoreDataService.shared.saveContext()
+         
     }
     
     var currentImage: UIImage {

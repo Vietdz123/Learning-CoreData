@@ -18,6 +18,8 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
     
     @Parameter(title: "Pick a image")
     var imageSrc: ImageSource
+    
+    
 
 }
 

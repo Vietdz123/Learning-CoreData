@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct PlaceholderView: View {
     
     var size: CGSize

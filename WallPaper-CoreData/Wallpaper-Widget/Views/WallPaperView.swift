@@ -9,7 +9,7 @@ import WidgetKit
 import SwiftUI
                 
 struct SourceImageEntry: TimelineEntry {
-    let date: Date = .now
+    let date: Date 
     let image: UIImage
     let size: CGSize
     let type: WDFolderType
